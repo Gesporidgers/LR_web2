@@ -1,0 +1,6 @@
+@LR_web2.Server_HostAddress = http://localhost:5078
+
+GET {{LR_web2.Server_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
