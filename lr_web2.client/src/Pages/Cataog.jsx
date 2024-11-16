@@ -1,7 +1,15 @@
 import { MagnifyingGlassIcon } from '@radix-ui/react-icons';
-import { Grid, Text, Heading, Box, TextField, Link, Button, Separator, TabNav, Card, ScrollArea, DropdownMenu, Inset} from '@radix-ui/themes';
+import { Grid, Text, Heading, Box, TextField, Button, Separator, TabNav, Card, Strong, Inset} from '@radix-ui/themes';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 
 export default function Catalog() {
+    var [travels, setTravels] = useState([]);
+    useEffect(()=>{
+        axios.get('api/travels').then((resp)=>{
+            setTravels(resp.data);
+        }).catch((err)=>console.log(err));
+    });
     return (
         <>
             <TabNav.Root>
@@ -18,14 +26,21 @@ export default function Catalog() {
                     <MagnifyingGlassIcon/>
                 </TextField.Slot>
             </TextField.Root>
-            <Box maxWidth='350px'>
+            
                 <Card>
                     <Inset clip="border-box" pb="current">
                         <img src="marocco.jpeg" alt="" srcset="" style={{width:'100%',height:"150px",objectFit:"cover", display:"block"}}/>
                     </Inset>
-                    <Text as='p'>Hello my lovely world</Text>
+                    <Heading as='h2'>Marocco</Heading>
+                    <Text as='p'>Lorem ipsum. Hello world!</Text>
+                    <Separator orientation='horizontal' my="3" size='4'/>
+                    <Grid columns='2'>
+                        <Text align='center' mt='auto'><Strong>4500 rub</Strong></Text> 
+                        <Button variant='soft'>More</Button>
+                    </Grid>
+                    
                 </Card>
-            </Box>
+            
         </>
     )
 }
