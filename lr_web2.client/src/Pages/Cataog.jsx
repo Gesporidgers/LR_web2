@@ -1,15 +1,66 @@
 import { MagnifyingGlassIcon } from '@radix-ui/react-icons';
-import { Grid, Text, Heading, Box, TextField, Button, Separator, TabNav, Card, Strong, Inset} from '@radix-ui/themes';
+import { Grid, Text, Heading, Box, TextField, Button, Separator, TabNav, Card, Strong, Inset, Spinner } from '@radix-ui/themes';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
 export default function Catalog() {
-    var [travels, setTravels] = useState([]);
-    useEffect(()=>{
-        axios.get('api/travels').then((resp)=>{
-            setTravels(resp.data);
-        }).catch((err)=>console.log(err));
-    });
+    const [travels, setTravels] = useState([]);
+    const [searchTerm, setSearchTerm] = useState("");
+    const [searchResults, setSearchResults] = useState([]);
+    const handleChange = event => { setSearchTerm(event.target.value); };
+    useEffect(() => {
+        axios.get('api/travels').then((resp) => {
+            const allData = resp.data;
+            setTravels(allData);
+        })
+            .catch((error => { console.log(error); setTravels(undefined) }));
+    }, [setTravels]);
+    useEffect(() => {
+        if (searchTerm == '') { setSearchResults(undefined) } else {
+            const results = travels.filter(itm => itm.name.toLowerCase().includes(searchTerm.toLowerCase()));
+            setSearchResults(results);
+        }
+
+    }, [searchTerm]);
+
+    
+    const content = <Grid columns='3' gap='3' pt='10pt' px='10pt' >
+        {travels === undefined ? <Spinner size='3' /> :
+            travels.map((item =>
+                <Card key={item.id}>
+                    <Inset clip="border-box" pb="current">
+                        <img src={item.imgSrc} alt="" style={{ width: '100%', height: "150px", objectFit: "cover", display: "block" }} />
+                    </Inset>
+                    <Heading as='h2' style={{ paddingBottom: '3pt' }}>{item.name}</Heading>
+                    <Text as='p'>{item.shortDesc}</Text>
+                    <Separator orientation='horizontal' my="3" size='4' />
+                    <Grid columns='2'>
+                        <Text align='center' mt='auto'><Strong>{item.cost} руб.</Strong></Text>
+                        <Button variant='soft'>Узнать больше</Button>
+                    </Grid>
+
+                </Card>
+            ))}
+    </Grid>;
+
+    const searcContent = <Grid columns='3' gap='3' pt='10pt' px='10pt' >
+        {searchResults === undefined ? <></> :searchResults.map((item =>
+                <Card key={item.id}>
+                    <Inset clip="border-box" pb="current">
+                        <img src={item.imgSrc} alt="" style={{ width: '100%', height: "150px", objectFit: "cover", display: "block" }} />
+                    </Inset>
+                    <Heading as='h2' style={{ paddingBottom: '3pt' }}>{item.name}</Heading>
+                    <Text as='p'>{item.shortDesc}</Text>
+                    <Separator orientation='horizontal' my="3" size='4' />
+                    <Grid columns='2'>
+                        <Text align='center' mt='auto'><Strong>{item.cost} руб.</Strong></Text>
+                        <Button variant='soft'>Узнать больше</Button>
+                    </Grid>
+
+                </Card>
+            ))}
+    </Grid>;
+
     return (
         <>
             <TabNav.Root>
@@ -19,28 +70,15 @@ export default function Catalog() {
                 <TabNav.Link href='catalog'>О нас</TabNav.Link>
             </TabNav.Root>
             <br />
-            <Heading as='h2'>Каталог</Heading>
-            
-            <TextField.Root variant='soft' placeholder='Поиск по каталогу'>
+            <Heading as='h2' style={{ padding: "0 10pt" }}>Каталог</Heading>
+            <br />
+            <TextField.Root variant='soft' placeholder='Поиск по каталогу' value={searchTerm} onChange={handleChange}>
                 <TextField.Slot>
-                    <MagnifyingGlassIcon/>
+                    <MagnifyingGlassIcon />
                 </TextField.Slot>
             </TextField.Root>
-            
-                <Card>
-                    <Inset clip="border-box" pb="current">
-                        <img src="marocco.jpeg" alt="" srcset="" style={{width:'100%',height:"150px",objectFit:"cover", display:"block"}}/>
-                    </Inset>
-                    <Heading as='h2'>Marocco</Heading>
-                    <Text as='p'>Lorem ipsum. Hello world!</Text>
-                    <Separator orientation='horizontal' my="3" size='4'/>
-                    <Grid columns='2'>
-                        <Text align='center' mt='auto'><Strong>4500 rub</Strong></Text> 
-                        <Button variant='soft'>More</Button>
-                    </Grid>
-                    
-                </Card>
-            
+            {searchResults===undefined ? content : searcContent}
+
         </>
     )
 }
