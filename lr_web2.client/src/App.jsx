@@ -30,7 +30,8 @@ function App() {
     return (
         <>
             <Grid columns="3" gap="1" width="auto" >
-                <img src="logo.png" alt="logo" />
+                <img src="logo.svg" alt="logo" width="100%" height='100%' style={{display:'block', objectFit:'contain'}}/>
+                
                 <Heading as="h1" align="center" style={{
                     margin: "auto", fontSize: "36pt"
                 }}>Золотая середина</Heading>
