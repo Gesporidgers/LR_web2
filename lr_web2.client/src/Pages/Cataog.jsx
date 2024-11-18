@@ -13,14 +13,17 @@ export default function Catalog() {
             const allData = resp.data;
             setTravels(allData);
         })
-            .catch((error => { console.log(error); setTravels(undefined) }));
+            .catch((error => { setTravels(undefined) }));
     }, [setTravels]);
     useEffect(() => {
-        if (searchTerm == '') { setSearchResults(undefined) } else {
-            const results = travels.filter(itm => itm.name.toLowerCase().includes(searchTerm.toLowerCase()));
-            setSearchResults(results);
+        if (travels === undefined) { setSearchResults(undefined)} else {
+            if (searchTerm == '') { setSearchResults(undefined) } else {
+                const results = travels.filter(itm => itm.name.toLowerCase().includes(searchTerm.toLowerCase()));
+                setSearchResults(results);
+            }
         }
-
+        
+        
     }, [searchTerm]);
 
     
@@ -67,7 +70,7 @@ export default function Catalog() {
                 <TabNav.Link href='/'>Главная</TabNav.Link>
                 <TabNav.Link active>Каталог</TabNav.Link>
                 <TabNav.Link href='buy'>Как купить</TabNav.Link>
-                <TabNav.Link href='catalog'>О нас</TabNav.Link>
+                <TabNav.Link href='about'>О нас</TabNav.Link>
             </TabNav.Root>
             <br />
             <Heading as='h2' style={{ padding: "0 10pt" }}>Каталог</Heading>
