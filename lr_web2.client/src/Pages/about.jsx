@@ -10,7 +10,7 @@ export default function About() {
                 <TabNav.Link active>О нас</TabNav.Link>
             </TabNav.Root>
             <br />
-            <Heading as='h2'>О нас</Heading>
+            <Heading as='h2' size='7'>О нас</Heading>
         </>
     )
 }

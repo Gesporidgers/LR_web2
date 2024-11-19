@@ -13,7 +13,7 @@ export default function MainPage(){
                 <TabNav.Link href='about'>О нас</TabNav.Link>
             </TabNav.Root>
             <br />
-            <Heading as='h2' style={{ padding: "0 10pt" }}>Новости</Heading> <br />
+            <Heading as='h2' style={{ padding: "0 10pt" }} size='8'>Новости</Heading> <br />
             <Grid gap="1" columns="3" px="10pt">
                 {News.map(article =>
                     <Card>
@@ -28,7 +28,7 @@ export default function MainPage(){
                 )}
             </Grid>
             <br />
-            <Heading as='h2' style={{ padding: "0 10pt" }}>Список городов отправления</Heading> <br />
+            <Heading as='h3' style={{ padding: "0 10pt" }}>Список городов отправления</Heading> <br />
             <ScrollArea type="always" scrollbars="vertical" style={{ height: 180, padding: "0 10pt" }}>
                 {Cities.map(ct =>
                     <Text as='div' size="5"><DotFilledIcon />{ct}</Text>

@@ -6,6 +6,7 @@ import Catalog from './Pages/Cataog';
 import Buy from './Pages/buy';
 import About from './Pages/about';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import TravelPage from './Pages/TravePage';
 
 const router = createBrowserRouter([
     {
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
     {
         path: 'about',
         element: <About/>,
+    },
+    {
+        path: 'catalog/:id',
+        element: <TravelPage/>
     }
 ])
 
@@ -30,7 +35,7 @@ function App() {
     return (
         <>
             <Grid columns="3" gap="1" width="auto" >
-                <img src="logo.svg" alt="logo" width="100%" height='100%' style={{display:'block', objectFit:'contain'}}/>
+                <img src="/logo.svg" alt="logo" width="100%" height='100%' style={{display:'block', objectFit:'contain'}}/>
                 
                 <Heading as="h1" align="center" style={{
                     margin: "auto", fontSize: "36pt"

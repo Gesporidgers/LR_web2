@@ -1,7 +1,8 @@
 import { MagnifyingGlassIcon } from '@radix-ui/react-icons';
-import { Grid, Text, Heading, Box, TextField, Button, Separator, TabNav, Card, Strong, Inset, Spinner } from '@radix-ui/themes';
+import { Grid, Text, Heading, TextField, Button, Separator, TabNav, Card, Strong, Inset, Spinner } from '@radix-ui/themes';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Catalog() {
     const [travels, setTravels] = useState([]);
@@ -39,7 +40,7 @@ export default function Catalog() {
                     <Separator orientation='horizontal' my="3" size='4' />
                     <Grid columns='2'>
                         <Text align='center' mt='auto'><Strong>{item.cost} руб.</Strong></Text>
-                        <Button variant='soft'>Узнать больше</Button>
+                        <Link to={'/catalog/'+item.id}><Button variant='soft'>Узнать больше</Button></Link>
                     </Grid>
 
                 </Card>
@@ -57,7 +58,7 @@ export default function Catalog() {
                     <Separator orientation='horizontal' my="3" size='4' />
                     <Grid columns='2'>
                         <Text align='center' mt='auto'><Strong>{item.cost} руб.</Strong></Text>
-                        <Button variant='soft'>Узнать больше</Button>
+                        <Link to={'/catalog/'+item.id}><Button variant='soft'>Узнать больше</Button></Link>
                     </Grid>
 
                 </Card>
@@ -73,7 +74,7 @@ export default function Catalog() {
                 <TabNav.Link href='about'>О нас</TabNav.Link>
             </TabNav.Root>
             <br />
-            <Heading as='h2' style={{ padding: "0 10pt" }}>Каталог</Heading>
+            <Heading as='h2' style={{ padding: "0 10pt" }} size='7'>Каталог</Heading>
             <br />
             <TextField.Root variant='soft' placeholder='Поиск по каталогу' value={searchTerm} onChange={handleChange}>
                 <TextField.Slot>
