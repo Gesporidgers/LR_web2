@@ -1,7 +1,8 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Box, Button, Flex, Grid, Heading, Separator, Text } from "@radix-ui/themes";
+import { Box, Button, Em, Flex, Grid, Heading, Separator, Text } from "@radix-ui/themes";
+import { ArrowLeftIcon } from "@radix-ui/react-icons";
 export default function TravelPage() {
     const { id } = useParams();
     var [itm, setItm] = useState({});
@@ -15,12 +16,13 @@ export default function TravelPage() {
     console.log(itm);
     return (
         <>
+            <Link to='/catalog' style={{padding: "0pt 10pt"}}><Button><ArrowLeftIcon/> Назад</Button></Link>
             <Heading as="h2" size='7' style={{ padding: "0 10pt" }}>{itm.name}</Heading>
             <br />
             <Grid columns='2' px='10pt'>
                 <img src={'/' + itm.imgSrc} alt="" style={{ borderRadius: 10 }} />
                 <Box>
-                    <Text as="p">{itm.shortDesc}</Text>
+                    <Text as="p" style={{fontSize:'14px', lineHeight:'16px'}}><Em>{itm.shortDesc}</Em></Text>
                     <br />
                     <Heading as="h4">{itm.cost} руб.</Heading>
                     <br />
@@ -30,7 +32,7 @@ export default function TravelPage() {
             <br />
             <Separator orientation='horizontal' size='4' />
             <br />
-            <Text as="p" style={{ padding: "0 10pt" }}>{itm.longDesc}</Text>
+            <Text as="p"  style={{ padding: "0pt 10pt", paddingBottom:'20pt', textAlign: 'justify', fontSize: '16px', lineHeight: '24px' }}>{itm.longDesc}</Text>
         </>
 
 

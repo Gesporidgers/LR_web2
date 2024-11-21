@@ -1,5 +1,5 @@
 
-import { Grid, Text, Heading, Box, TextField, Link, Button, Separator, TabNav, Card, ScrollArea } from '@radix-ui/themes';
+import { Grid, Text, Heading, Box, TextField, Link, Button, Separator } from '@radix-ui/themes';
 import "./App.css"
 import MainPage from './Pages/MainPage';
 import Catalog from './Pages/Cataog';
@@ -61,16 +61,17 @@ function App() {
                         <TextField.Root size="2" radius='full' placeholder="Password" type='password' />
                     </Box>
 
-                    <Button radius='full' variant='outline' href=''>Забыли пароль</Button>
-                    <Button radius='full' style={{ padding: "0pt 7%", marginLeft: "10%" }}>Войти</Button>
+                    <Button radius='full' variant='outline' onClick={(event)=> event.preventDefault()}>Забыли пароль</Button>
+                    <Button radius='full' onClick={(event)=> event.preventDefault()} style={{ padding: "0pt 7%", marginLeft: "10%" }}>Войти</Button>
                     <br />
-                    <Text>Нет аккаунта? <Link>Зарегистрируйтесь</Link> </Text>
+                    <Text>Нет аккаунта? <Link onClick={(event)=> event.preventDefault()}>Зарегистрируйтесь</Link> </Text>
                     
                 </form>
 
             </Grid>
             <Separator my="3" size="4" />
             <RouterProvider router={router}/>
+            <footer>&copy; Все права защищены</footer>
         </>
 
 

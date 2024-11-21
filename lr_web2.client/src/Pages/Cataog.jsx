@@ -82,7 +82,7 @@ export default function Catalog() {
                 </TextField.Slot>
             </TextField.Root>
             {searchResults===undefined ? content : searcContent}
-
+            <br /><br /><br />
         </>
     )
 }

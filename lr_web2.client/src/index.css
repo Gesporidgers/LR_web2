@@ -6,7 +6,7 @@
   margin: 0 auto;
   color-scheme: light dark;
   background-color: #f8f8f8;
-  padding: 0 0pt;
+  padding: 0pt 20pt;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -14,18 +14,25 @@
 }
 html {
   background: url("bg.jpg") center/cover no-repeat;
-  
+  position: relative;
+  min-height: 100%;
   
 }
+
+body {
+  margin: 0pt 0pt;
+}
+
 a {
   font-weight: 500;
   color: #646cff;
   text-decoration: inherit;
 }
-a:hover {
-  color: #535bf2;
+
+
+footer {
+  position: absolute;
+  bottom: 25px;
+  height: 0;
 }
-
-
-
 
