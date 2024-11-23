@@ -8,6 +8,7 @@ export default function About() {
                 <TabNav.Link href='/catalog'>Каталог</TabNav.Link>
                 <TabNav.Link href='/buy'>Как купить</TabNav.Link>
                 <TabNav.Link active>О нас</TabNav.Link>
+                <TabNav.Link href='contact'>Контакты</TabNav.Link>
             </TabNav.Root>
             <br />
             <Heading as='h2' size='7' style={{padding: "0pt 10pt"}}>О нас</Heading>

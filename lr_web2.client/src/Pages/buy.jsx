@@ -8,6 +8,7 @@ export default function Buy() {
                 <TabNav.Link href='catalog'>Каталог</TabNav.Link>
                 <TabNav.Link active>Как купить</TabNav.Link>
                 <TabNav.Link href='about'>О нас</TabNav.Link>
+                <TabNav.Link href='contact'>Контакты</TabNav.Link>
             </TabNav.Root>
             <br />
             <Heading as='h2' style={{ padding: "0 10pt" }} size='7'>Как купить</Heading>

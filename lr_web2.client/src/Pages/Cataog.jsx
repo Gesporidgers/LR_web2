@@ -72,6 +72,7 @@ export default function Catalog() {
                 <TabNav.Link active>Каталог</TabNav.Link>
                 <TabNav.Link href='buy'>Как купить</TabNav.Link>
                 <TabNav.Link href='about'>О нас</TabNav.Link>
+                <TabNav.Link href='contact'>Контакты</TabNav.Link>
             </TabNav.Root>
             <br />
             <Heading as='h2' style={{ padding: "0 10pt" }} size='7'>Каталог</Heading>
