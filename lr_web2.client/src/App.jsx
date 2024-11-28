@@ -71,7 +71,7 @@ function App() {
                     <br />
                     <Text>Нет аккаунта?</Text>
                     <Dialog.Root>
-                        <Dialog.Trigger><Link>Зарегистрируйтесь</Link></Dialog.Trigger>
+                        <Dialog.Trigger><a className='btn-reg'>Зарегистрируйтесь</a></Dialog.Trigger>
                         <Dialog.Content maxWidth='450px'>
                             <Dialog.Title>Регистрация</Dialog.Title>
 

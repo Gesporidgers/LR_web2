@@ -1,4 +1,11 @@
-﻿
+﻿a.btn-reg{
+    color: #3e63dd;
+    font-weight: 400;
+}
+
+a.btn-reg:hover{
+    color: #324eac;
+}
 
 tr:nth-child(even) {
     background: #F2F2F2;
