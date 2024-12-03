@@ -3,6 +3,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Box, Button, Em, Flex, Grid, Heading, Separator, Text } from "@radix-ui/themes";
 import { ArrowLeftIcon } from "@radix-ui/react-icons";
+import Carousel from "../assets/carousel";
 export default function TravelPage() {
     const { id } = useParams();
     var [itm, setItm] = useState({});
@@ -19,8 +20,12 @@ export default function TravelPage() {
             <Link to='/catalog' style={{padding: "0pt 10pt"}}><Button><ArrowLeftIcon/> Назад</Button></Link>
             <Heading as="h2" size='7' style={{ padding: "0 10pt" }}>{itm.name}</Heading>
             <br />
-            <Grid columns='2' px='10pt'>
-                <img src={'/' + itm.imgSrc} alt="" style={{ borderRadius: 10 }} />
+            <Grid columns='2' px='10pt' gap='3'>
+                <Carousel>
+                    <img src={'/' + itm.imgSrc } alt="" style={{ borderRadius: 10 }} />
+                    {}
+                    <img src={'/' + 'novogodnyayamoskva.jpg'} alt="" style={{ borderRadius: 10 }} />
+                </Carousel>
                 <Box>
                     <Text as="p" style={{fontSize:'14px', lineHeight:'16px'}}><Em>{itm.shortDesc}</Em></Text>
                     <br />

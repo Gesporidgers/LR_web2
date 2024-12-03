@@ -12,8 +12,6 @@ namespace LR_web2.Server
 
 			builder.Services.AddControllers();
 			builder.Services.AddDbContext<Context>(options => options.UseSqlite("Data Source=Travels.db"));
-			builder.Services.AddDbContext<PropertyContext>(options => options.UseSqlite("Data Source=Properities.db"));
-			builder.Services.AddDbContext<ImageContext>(options => options.UseSqlite("Data Source=Images.db"));
 			// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 			builder.Services.AddEndpointsApiExplorer();
 			builder.Services.AddSwaggerGen();

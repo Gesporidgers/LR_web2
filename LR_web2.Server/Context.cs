@@ -5,6 +5,8 @@ namespace LR_web2.Server
 	public class Context : DbContext
 	{
 		public DbSet<Travel> travels { get; set; } = null !;
+		public DbSet<Property> properties { get; set; } = null!;
+		public DbSet<Image> images { get; set; } = null!;
 		public Context(DbContextOptions<Context> options) : base(options)
 		{
 			Database.EnsureCreated();
