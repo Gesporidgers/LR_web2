@@ -10,9 +10,8 @@ const Carousel = (props)=>{
     useEffect(()=>{
         setLength(children.length)
     }, [children])
-
     const next = () => {
-        if (currentIndex < (length - 1)) {
+        if (currentIndex < (length)) {
             setCurrentIndex(prevState=> prevState+1)
         }
     }

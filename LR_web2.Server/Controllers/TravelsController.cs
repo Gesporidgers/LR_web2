@@ -23,16 +23,16 @@ namespace LR_web2.Server.Controllers
 
         // GET: api/Travels
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Travel>>> Gettravels()
+        public  IEnumerable<Travel> Gettravels()
         {
-            return await _context.travels.ToListAsync();
+            return  _context.travels.Include(i=>i.Images).ToList();
         }
 
         // GET: api/Travels/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Travel>> GetTravel(long id)
+        public ActionResult<Travel> GetTravel(int id)
         {
-            var travel = await _context.travels.FindAsync(id);
+            var travel =  _context.travels.Include(i => i.Images).ToList().FirstOrDefault(t => t.Id == id);
 
             if (travel == null)
             {
@@ -55,7 +55,7 @@ namespace LR_web2.Server.Controllers
 
         // DELETE: api/Travels/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteTravel(long id)
+        public async Task<IActionResult> DeleteTravel(int id)
         {
             var travel = await _context.travels.FindAsync(id);
             if (travel == null)
@@ -69,7 +69,7 @@ namespace LR_web2.Server.Controllers
             return NoContent();
         }
 
-        private bool TravelExists(long id)
+        private bool TravelExists(int id)
         {
             return _context.travels.Any(e => e.Id == id);
         }

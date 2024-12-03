@@ -2,8 +2,9 @@
 {
     public class Property
     {
-        public long id { get; set; }
+        public int id { get; set; }
         public Travel? product { get; set; }
+        public int? productId { get; set; }
         public uint property_price { get; set; }
 
     }

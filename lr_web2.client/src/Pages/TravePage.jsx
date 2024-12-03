@@ -7,14 +7,15 @@ import Carousel from "../assets/carousel";
 export default function TravelPage() {
     const { id } = useParams();
     var [itm, setItm] = useState({});
+    var [pictures, setPictures] = useState([])
     useEffect(() => {
         axios.get('/api/travels/' + id).then(resp => {
             const allData = resp.data;
             setItm(allData);
+            setPictures(allData.images)
         }
         );
     }, [setItm]);
-    console.log(itm);
     return (
         <>
             <Link to='/catalog' style={{padding: "0pt 10pt"}}><Button><ArrowLeftIcon/> Назад</Button></Link>
@@ -23,8 +24,10 @@ export default function TravelPage() {
             <Grid columns='2' px='10pt' gap='3'>
                 <Carousel>
                     <img src={'/' + itm.imgSrc } alt="" style={{ borderRadius: 10 }} />
-                    {}
-                    <img src={'/' + 'novogodnyayamoskva.jpg'} alt="" style={{ borderRadius: 10 }} />
+                    {pictures.map(pic =>
+                        <img src={'/' + pic.path } alt="" style={{ borderRadius: 10 }} />
+                    )}
+                    
                 </Carousel>
                 <Box>
                     <Text as="p" style={{fontSize:'14px', lineHeight:'16px'}}><Em>{itm.shortDesc}</Em></Text>

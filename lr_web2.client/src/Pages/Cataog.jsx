@@ -16,6 +16,7 @@ export default function Catalog() {
         })
             .catch((error => { setTravels(undefined) }));
     }, [setTravels]);
+    
     useEffect(() => {
         if (travels === undefined) { setSearchResults(undefined)} else {
             if (searchTerm == '') { setSearchResults(undefined) } else {
