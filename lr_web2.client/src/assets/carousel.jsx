@@ -1,7 +1,7 @@
 import { Button } from '@radix-ui/themes';
 import './carousel.css';
 import { ArrowLeftIcon, ArrowRightIcon } from '@radix-ui/react-icons';
-import { Children, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const Carousel = (props)=>{
     const {children} = props
@@ -9,7 +9,7 @@ const Carousel = (props)=>{
     const [length, setLength] = useState(children.length)
     useEffect(()=>{
         setLength(children.length)
-    }, [children])
+    }, [])
     const next = () => {
         if (currentIndex < (length)) {
             setCurrentIndex(prevState=> prevState+1)

@@ -14,7 +14,7 @@ export default function Catalog() {
             const allData = resp.data;
             setTravels(allData);
         })
-            .catch((error => { setTravels(undefined) }));
+            .catch((error => { setTravels([]) }));
     }, [setTravels]);
     
     useEffect(() => {
@@ -30,7 +30,7 @@ export default function Catalog() {
 
     
     const content = <Grid columns='3' gap='3' pt='10pt' px='10pt' >
-        {travels === undefined ? <Spinner size='3' /> :
+        {travels.length == 0? <Spinner size='3' /> :
             travels.map((item =>
                 <Card key={item.id}>
                     <Inset clip="border-box" pb="current">
