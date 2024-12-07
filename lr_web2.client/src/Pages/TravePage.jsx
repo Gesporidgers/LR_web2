@@ -60,7 +60,7 @@ export default function TravelPage() {
                             <CheckboxGroup.Root defaultValue={(used.map(i => i.id))}>
                                 {properities.map(p => 
                                     <CheckboxGroup.Item value={p.id} onClick={(ittm=>{
-                                        console.log(used.find(i => i.id == p.id))
+                                        
                                         if (!used.find(i => i.id == p.id)){
                                             
                                             used.push(p)
