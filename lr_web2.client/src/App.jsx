@@ -8,6 +8,8 @@ import About from './Pages/about';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import TravelPage from './Pages/TravePage';
 import Contact from './Pages/contact';
+import LoginForm from './assets/loginform';
+import Cabinet from './assets/cabinet';
 
 const router = createBrowserRouter([
     {
@@ -32,11 +34,15 @@ const router = createBrowserRouter([
     },
     {
         path: 'contact',
-        element: <Contact/>,
+        element: <Contact />,
     }
 ])
 
 function App() {
+    var token = localStorage.getItem('token')
+    console.log(token)
+    var userID = localStorage.getItem('userID')
+    
     return (
         <>
             <Grid columns="3" gap="1" width="auto" >
@@ -46,7 +52,7 @@ function App() {
                     margin: "auto", fontSize: "36pt"
                 }}>Золотая середина</Heading>
 
-                <form action="" method="post" style={{
+                <Box style={{
                     backgroundColor: "lightgrey",
                     paddingBlock: "3pt",
                     margin: "0 2rem",
@@ -54,57 +60,9 @@ function App() {
                     borderRadius: "10px"
                 }
                 }>
-                    <Heading as='h2'>Login</Heading>
-                    <Box maxWidth="250px" style={{
-                        margin: "5pt auto"
-                    }}>
-                        <TextField.Root size="2" radius='full' placeholder="Email" type='email' />
-                    </Box>
-                    <Box maxWidth="250px" style={{
-                        margin: "5pt auto"
-                    }}>
-                        <TextField.Root size="2" radius='full' placeholder="Password" type='password' />
-                    </Box>
+                    {token?<Cabinet userID={userID}/>:<LoginForm/>}
 
-                    <Button radius='full' variant='outline' onClick={(event) => event.preventDefault()}>Забыли пароль</Button>
-                    <Button radius='full' onClick={(event) => event.preventDefault()} style={{ padding: "0pt 7%", marginLeft: "10%" }}>Войти</Button>
-                    <br />
-                    <Text>Нет аккаунта?</Text>
-                    <Dialog.Root>
-                        <Dialog.Trigger><Link>Зарегистрируйтесь</Link></Dialog.Trigger>
-                        <Dialog.Content maxWidth='450px'>
-                            <Dialog.Title>Регистрация</Dialog.Title>
-
-                            <Box maxWidth="250px" style={{
-                                margin: "5pt auto"
-                            }}>
-                                <TextField.Root size="2" radius='full' placeholder="Имя" type='text' />
-                            </Box>
-                            <Box maxWidth="250px" style={{
-                                margin: "5pt auto"
-                            }}>
-                                <TextField.Root size="2" radius='full' placeholder="Email" type='email' />
-                            </Box>
-                            <Box maxWidth="250px" style={{
-                                margin: "5pt auto"
-                            }}>
-                                <TextField.Root size="2" radius='full' placeholder="Пароль" type='password' />
-                            </Box>
-                            <Grid columns='2' gap='2'>
-                                <Dialog.Close>
-                                    <Button>Регистрация</Button>
-                                </Dialog.Close>
-                                <Dialog.Close>
-                                    <Button variant='soft'>Закрыть</Button>
-                                </Dialog.Close>
-                            </Grid>
-
-                        </Dialog.Content>
-
-                    </Dialog.Root>
-
-
-                </form>
+                </Box>
 
             </Grid>
             <Separator my="3" size="4" />

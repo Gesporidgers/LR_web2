@@ -19,7 +19,6 @@ namespace LR_web2.Server
 			modelBuilder.Entity<User>().ToTable("users");
 			modelBuilder.Entity<User>().Property(user => user.name).HasMaxLength(60).IsRequired();
 			modelBuilder.Entity<User>().Property(user => user.email).HasMaxLength(60).IsRequired();
-
 			
 		}
 	}
