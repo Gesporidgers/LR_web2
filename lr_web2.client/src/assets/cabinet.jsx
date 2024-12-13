@@ -10,7 +10,7 @@ export default function Cabinet(userID) {
             <br />
             <Grid columns='2' gap='2' p='3'>
                 <Button variant='outline' radius='full'>Корзина</Button>
-                <Button color='red' radius='full' onClick={localStorage.clear()}><ExitIcon/>Выйти</Button>
+                <Button color='red' radius='full' onClick={()=>localStorage.clear()}><ExitIcon/>Выйти</Button>
             </Grid>
 
         </Box>
