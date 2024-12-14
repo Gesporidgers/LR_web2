@@ -75,27 +75,5 @@ namespace LR_web2.Server.Controllers
 			}
 		}
 
-		//[HttpGet("cart/{id}")]
-		//public ActionResult<IEnumerable<Order>> GetCart(string id)
-		//{
-		//	return userContext.users.FirstOrDefault(i => i.id== id).cart;
-		//}
-
-		//[HttpPost("cart")]
-		//public ActionResult<Order> AddToCart(Order order)
-		//{
-		//	userContext.users.FirstOrDefault(i => i.id == order.userID).cart.Add(order);
-		//	userContext.SaveChanges();
-		//	return CreatedAtAction("GetCart", new { id = order.Id }, order);
-		//}
-
-		//[HttpDelete("cart/{id}")]
-		//public IActionResult ClearCart(string id) {
-		//	userContext.users.FirstOrDefault(i => i.id == id).cart.Clear();
-
-		//	userContext.SaveChanges();
-
-		//	return NoContent();
-		//}
 	}
 }

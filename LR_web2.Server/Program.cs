@@ -19,7 +19,7 @@ namespace LR_web2.Server
 			builder.Services.AddControllers();
 			builder.Services.AddDbContext<Context>(options => options.UseSqlite("Data Source=Travels.db"));
 			builder.Services.AddDbContext<UserContext>(options => options.UseSqlite("Data Source = Users.db"));
-			
+			builder.Services.AddDbContext<OrderContext>(options => options.UseSqlite("Data Source = Carts.db"));
 			builder.Services.AddMvc();
 			builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 				.AddJwtBearer(options =>

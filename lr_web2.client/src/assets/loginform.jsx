@@ -10,6 +10,7 @@ export default function LoginForm() {
                 .then((resp) => {
                     localStorage.setItem('token', resp.data.token)
                     localStorage.setItem('userID',resp.data.id)
+                    localStorage.setItem('exptime',resp.data.expirationTime)
                     console.log(resp.data)
                 })
             }

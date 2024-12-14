@@ -35,6 +35,8 @@ export default function MainPage(){
                     <Text as='div' size="5"><DotFilledIcon />{ct}</Text>
                 )}
             </ScrollArea>
+            <br />
+            <a style={{padding:"0 10pt"}} href='https://goldenmiddle.ru/politika-obrabotki-personalnyh-dannyh'>Политика конфиденциальности</a>
         </>
     );
 }

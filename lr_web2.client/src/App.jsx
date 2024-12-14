@@ -10,6 +10,8 @@ import TravelPage from './Pages/TravePage';
 import Contact from './Pages/contact';
 import LoginForm from './assets/loginform';
 import Cabinet from './assets/cabinet';
+import axios from 'axios';
+import Cart from './Pages/Cart';
 
 const router = createBrowserRouter([
     {
@@ -35,13 +37,18 @@ const router = createBrowserRouter([
     {
         path: 'contact',
         element: <Contact />,
+    },
+    {
+        path: 'cart/:userid',
+        element: <Cart/>
     }
 ])
 
 function App() {
-    var token = localStorage.getItem('token')
-    console.log(token)
+    var Utoken = localStorage.getItem('token')
+    console.log(Utoken)
     var userID = localStorage.getItem('userID')
+    
     
     return (
         <>
@@ -60,7 +67,7 @@ function App() {
                     borderRadius: "10px"
                 }
                 }>
-                    {token?<Cabinet userID={userID}/>:<LoginForm/>}
+                    {Utoken?<Cabinet userID={userID}/>:<LoginForm/>}
 
                 </Box>
 

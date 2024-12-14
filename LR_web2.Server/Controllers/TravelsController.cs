@@ -69,6 +69,12 @@ namespace LR_web2.Server.Controllers
 			return NoContent();
 		}
 
+		[HttpGet("{id}/only")]
+		public async Task<ActionResult<string>> GetOnlyName(int id)
+		{
+			var travel = await _context.travels.FindAsync(id);
+			return travel == null ? NotFound() : travel.Name;
+		}
 		private bool TravelExists(int id)
 		{
 			return _context.travels.Any(e => e.Id == id);
